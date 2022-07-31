@@ -22,3 +22,14 @@ html {
 .show {
   display: block;
 }
+
+.card {
+  display: grid;
+  width: 18rem;
+  grid-template-rows: max-content 200px 1fr;
+}
+
+.textBeachName {
+  font-size: 1rem;
+
+}
