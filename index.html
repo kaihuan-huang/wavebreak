@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@1,300&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="./assets/style.css">
     <title>WaveBreak</title>
 </head>
@@ -17,100 +21,47 @@
             <!-- navbar -->
             <nav class="navbar" role="navigation" aria-label="main navigation">
                 <div class="navbar-brand">
-                    <a class="navbar-item" href="https://bulma.io">
-                        <img src="assets/images/logo.png" width="112" height="28">
+                    <a class="navbar-item" href="">
+                        <img class="logo" src="assets/images/Screen Shot 2022-07-28 at 7.41.29 PM.png" width="112" height="50">
                     </a>
 
-                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                        data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div id="navbarBasicExample" class="navbar-menu">
+                     <div id="navbarBasicExample" class="navbar-menu">
                     <div class="navbar-start">
-                        <a class="navbar-item">
-                            Home
+                        <a class="navbar-item" href="">
+                            Find waves near you.
                         </a>
-
-                        <a class="navbar-item">
-                            Temperature
-                        </a>
-
-                        <div class="navbar-item has-dropdown is-hoverable">
-                            <a class="navbar-link">
-                                More
-                            </a>
-
-                            <div class="navbar-dropdown">
-                                <a class="navbar-item">
-                                    About
-                                </a>
-                                <a class="navbar-item">
-                                    Information
-                                </a>
-                                <a class="navbar-item">
-                                    Contact
-                                </a>
-                                <hr class="navbar-divider">
-                                <a class="navbar-item">
-                                    Report an issue
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </nav>
+                    
+            <!-- time display -->
+            <div class="time">
 
-
+            </div>
 
             <!-- input field in head -->
             <!-- submit button -->
-            
-            <div class="field has-addons is-grouped is-grouped-centered">
-                <div class="control">
-                    <input class="input" type="text" id="searchVal" placeholder="Find Beaches Nearby!">
-                </div>
-                <div class="control">
-                    <a class="button is-info" id="searchBeach">
-                        Search
-                    </a>
-                </div>
+
+           <!-- submit button -->
+           <div class="field has-addons is-grouped is-grouped-centered ">
+            <div class="control">
+                <input class="input" type="text" id="searchVal" placeholder="Find Beaches Nearby!">
+            </div>
+        <div class="field has-addons is-grouped is-grouped-centered">
+            <div
+            class="control">
+                <button
+                class="button is-info" id="searchBeach">
+                Search
+                </button>
             </div>
         </div>
-    
+            <!-- 
+            <div class="hidden " id="card">
+                <div class="cardImage" id="cardImage">
 
-        <!--  display box-->
+                </div>
 
-        <div id ="tempDisplay"></div>
+            </div> -->
 
-        <div class="tile is-ancestor hidden">
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">One</p>
-                    <p class="subtitle">Subtitle</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">Two</p>
-                    <p class="subtitle">Subtitle</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">Three</p>
-                    <p class="subtitle">Subtitle</p>
-                </article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child box">
-                    <p class="title">Four</p>
-                    <p class="subtitle">Subtitle</p>
-                </article>
-            </div>
         </div>
 
         <div class="historyButton">
@@ -122,16 +73,20 @@
 
 
 
-
-
     </section>
-    <footer id="footer"><strong>WaveBreak</strong> <a>Made by Team 11 with heart!</a></footer>
+
+    <div class="show" id="card">
+        <div class="cardImage" id="cardImage">
+
+
+        </div>
+
+    </div>
+    <!-- <footer id="footer"><strong>WaveBreak</strong> <a>Made by Team 11 with heart!</a></footer> -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/script.js"></script>
 </body>
 
 </html>
-
-<!-- comment for test push -->
-<!-- comment #2-->
