@@ -89,9 +89,10 @@ function getBeachdata() {
       // // cardImage += "<img src=" + res[i].Photo_1 + ">" + textBeachName + textBeachDistance;
       var cardDiv = $('<div>');
       var cardImage = $('<img>').attr('src', res[i].Photo_1);
-      var cardP = $('<p>').text(beachList[i].beachName);
-      var cardDistance = $('<p>').text(beachList[i].beachDistance.toFixed(1) + "Miles")
-      cardDiv.append(cardImage, cardP, cardDistance);
+      var cardP = $('<p>').text("Beach Name: " + beachList[i].beachName);
+      var cardDistance = $('<p>').text("Beach Distance: " + beachList[i].beachDistance.toFixed(1) + "Miles");
+      var cardDescribe = $('<p>').text("Description: " + res[i].DescriptionMobileWeb);
+      cardDiv.append(cardImage, cardP, cardDistance, cardDescribe);
       console.log(cardDiv);
       $("#cardImage").append(cardDiv);
 
