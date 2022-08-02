@@ -35,6 +35,7 @@ function distance(
 //finding the entered lat/lon
 
 $("#searchBeach").on("click", function () {
+    event.preventDefault();
   var searchVal = $("#searchVal").val();
   var weatherAPIurl =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -66,9 +67,13 @@ function getBeachdata() {
         // text += '<p>' + res[i].NameMobileWeb + " "+ distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K") +'</p>';
         // console.log(text)
         var beach = {
-          beachName: res[i].NameMobileWeb,
-          beachDistance: distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K"),
-          description: res[i].DescriptionMobileWeb,
+            beachName: res[i].NameMobileWeb,
+            beachDistance: distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K"),
+            description: res[i].DescriptionMobileWeb,
+            beachImage: res[i].Photo_1,
+            beachDescription: res[i].DescriptionMobileWeb,
+            beachParking: res[i].PARKING,
+            beachDogs: res[i].DOG_FRIENDLY,
         };
         beachList.push(beach);
       }
@@ -91,11 +96,13 @@ function getBeachdata() {
       // textBeachDistance = "<strong> Distance: </strong>" + beachList[i].beachDistance.toFixed(1) + "Miles";
       // // cardImage += "<img src=" + res[i].Photo_1 + ">" + textBeachName + textBeachDistance;
       var cardDiv = $('<div>');
-      var cardImage = $('<img>').attr('src', res[i].Photo_1);
+      var cardImage = $('<img>').attr('src', beachList[i].beachImage);
       var cardP = $('<p>').text("Beach Name: " + beachList[i].beachName);
       var cardDistance = $('<p>').text("Beach Distance: " + beachList[i].beachDistance.toFixed(1) + "Miles");
-      var cardDescribe = $('<p>').text("Description: " + res[i].DescriptionMobileWeb);
-      cardDiv.append(cardImage, cardP, cardDistance, cardDescribe);
+      var cardDescribe = $('<p>').text("Description: " + beachList[i].beachDescription);
+      var cardDog = $('<p>').text("Dog Friendly: " + beachList[i].beachDogs);
+      var cardParking = $('<p>').text("Parking: " + beachList[i].beachParking);
+      cardDiv.append(cardImage, cardP, cardDistance, cardDescribe, cardDog, cardParking);
       console.log(cardDiv);
       $("#cardImage").append(cardDiv);
 
