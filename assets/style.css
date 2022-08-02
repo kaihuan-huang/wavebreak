@@ -21,6 +21,7 @@ html {
 
 .show {
   display: block;
+  justify-content: center;
 }
 
 .card {
@@ -31,5 +32,10 @@ html {
 
 .textBeachName {
   font-size: 1rem;
+}
 
+.cardImage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 }
