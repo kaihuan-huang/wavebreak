@@ -78,7 +78,47 @@ $.ajax({
 
   })};
 
+var search = document.getElementById("searchVal");
+var saveButton = document.getElementById("searchBeach");
 
+  function saveSearch() {
+    var searchSave = {
+      search: search.value.trim()
+    };
+    localStorage.setItem("searchSave", JSON.stringify(searchSave));
+  }
+  function renderLastSearch() {
+    var lastSearch = JSON.parse(localStorage.getItem("searchSave"));
+    if (lastSearch !== null) {
+    document.getElementById("saved-search").innerHTML = lastSearch.search;
+    } else {
+      return;
+    }
+  }
+  saveButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    saveSearch();
+    renderLastSearch();
+    });
+
+    function init() {
+      renderLastSearch();
+    }
+    init();
+
+    $("#saved-search").on("click", function (){
+      var searchVal=$("#searchVal").val();
+      var weatherAPIurl="http://api.openweathermap.org/geo/1.0/direct?q="+searchVal+"&appid=d572ae73424a51099cdef316a3e66b68"
+      fetch(weatherAPIurl).then(function(res){
+        return res.json();
+      }).then(function(data){
+        poslat= data[0].lat
+        poslon= data[0].lon
+        getBeachdata();
+      })
+        
+     });
+  
 
   //Or this one
 
