@@ -122,4 +122,80 @@ function getBeachdata() {
     });
 }
 
+var search = document.getElementById("searchVal");
+var saveButton = document.getElementById("searchBeach");
 
+  function saveSearch() {
+    var searchSave = {
+      search: search.value.trim()
+    };
+    localStorage.setItem("searchSave", JSON.stringify(searchSave));
+  }
+  function renderLastSearch() {
+    var lastSearch = JSON.parse(localStorage.getItem("searchSave"));
+    if (lastSearch !== null) {
+    document.getElementById("saved-search").innerHTML = lastSearch.search;
+    } else {
+      return;
+    }
+  }
+  saveButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    saveSearch();
+    renderLastSearch();
+    });
+
+    function init() {
+      renderLastSearch();
+    }
+    init();
+
+    $("#saved-search").on("click", function (){
+      var searchVal=$("#searchVal").val();
+      var weatherAPIurl="http://api.openweathermap.org/geo/1.0/direct?q="+searchVal+"&appid=d572ae73424a51099cdef316a3e66b68"
+      fetch(weatherAPIurl).then(function(res){
+        return res.json();
+      }).then(function(data){
+        poslat= data[0].lat
+        poslon= data[0].lon
+        getBeachdata();
+      })
+        
+     });
+  
+
+  //Or this one
+
+//   function distance(position1,position2){
+//     var lat1=position1.latitude;
+//     var lat2=position2.latitude;
+//     var lon1=position1.longitude;
+//     var lon2=position2.longitude;
+//     var R = 6371000; // metres
+//     var φ1 = lat1.toRadians();
+//     var φ2 = lat2.toRadians();
+//     var Δφ = (lat2-lat1).toRadians();
+//     var Δλ = (lon2-lon1).toRadians();
+
+//     var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+//         Math.cos(φ1) * Math.cos(φ2) *
+//         Math.sin(Δλ/2) * Math.sin(Δλ/2);
+//     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+//     var d = R * c;
+//     return d;
+// }
+
+// var closest=locations[0];
+// var closest_distance=distance(closest,position.coords);
+// for(var i=1;i< 4 ;i++){
+//     if(distance(locations[i],position.coords)<closest_distance){
+//          closest_distance=distance(locations[i],position.coords);
+//          closest=locations[i];
+
+         
+//     $('#tempDisplay').append(closest);
+
+//     }
+// }
+ 
