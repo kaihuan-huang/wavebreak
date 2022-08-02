@@ -21,4 +21,29 @@ html {
 
 .show {
   display: block;
+  justify-content: center;
+}
+
+/* .card {
+  display: grid;
+  width: 15rem;
+  grid-template-rows: max-content 200px 1fr;
+} */
+
+.cardImage {
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-around;
+  margin: 2rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+p {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  text-align: center;
+  background-color: aliceblue;
 }
