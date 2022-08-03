@@ -3,7 +3,6 @@
 // var date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
 // console.log(today);
 // $('.time').append(today);
-// loc ---> store loc ---> get data ---> check lat/lon ---> compare ----> return top 5
 var beachList = [];
 var poslat = "";
 var poslon = "";
@@ -34,9 +33,10 @@ function distance(
 }
 //finding the entered lat/lon
 
-$("#searchBeach").on("click", function () {
+$("#searchBeach").on("click", function (event) {
     event.preventDefault();
     var searchVal = $("#searchVal").val();
+    console.log("searchVal", searchVal);
     var weatherAPIurl =
         "http://api.openweathermap.org/geo/1.0/direct?q=" +
         searchVal +
@@ -60,7 +60,8 @@ function getBeachdata() {
         method: "GET",
     }).then(function (res) {
         console.log("beachData", res);
-
+        $("#cardImage").html("")
+        beachList= [];
         for (var i = 0; i < res.length; i++) {
             // if this location is within 0.1KM of the user, add it to the list
             if (distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K") <= 20) {
@@ -84,17 +85,11 @@ function getBeachdata() {
         });
 
         console.log("nearbyBeachList", beachList);
-        // var text = "";
-        // var textBeachName = " ";
-        // var textBeachDistance = " ";
-        // var cardImage = " ";
+        
+        
+        
         for (var i = 0; i < 6; i++) {
-            // text += '<p>' + beachList[i].beachName + " "+ beachList[i].beachDistance +'</p>';
-            //CardOne
-
-            // textBeachName = "<strong>" + beachList[i].beachName + ": </strong>";
-            // textBeachDistance = "<strong> Distance: </strong>" + beachList[i].beachDistance.toFixed(1) + "Miles";
-            // // cardImage += "<img src=" + res[i].Photo_1 + ">" + textBeachName + textBeachDistance;
+       
             var cardDiv = $('<div class="card">');
             var cardImage = $('<img>').attr('src', beachList[i].beachImage);
             var cardP = $('<p>').text("Beach Name: " + beachList[i].beachName);
@@ -107,18 +102,7 @@ function getBeachdata() {
             $("#cardImage").append(cardDiv);
 
         }
-        // $("#card").removeClass("hidden");
-        // $("#cardImage").append(cardImage);
-        // $("#textBeachName").append(textBeachName);
-        // $("#card").addClass("show");
-        // $('nav').addClass("hidden");
-
-        // $("#cardImage").on('click', function (res) {
-        //   getBeachdata();
-        //   console.log('res', res);
-        //   $('document').remove("#card");
-
-        // })
+        
     });
 }
 
@@ -132,9 +116,15 @@ var saveButton = document.getElementById("searchBeach");
     localStorage.setItem("searchSave", JSON.stringify(searchSave));
   }
   function renderLastSearch() {
-    var lastSearch = JSON.parse(localStorage.getItem("searchSave"));
-    if (lastSearch !== null) {
-    document.getElementById("saved-search").innerHTML = lastSearch.search;
+    var lastSearch = JSON.parse(localStorage.getItem("searchSave"))["search"];
+    if (lastSearch) {
+    // document.getElementById("saved-search").innerHTML = lastSearch.search;
+    var button = document.createElement("button")
+    button.setAttribute("data-val", lastSearch);
+    button.classList.add("button")
+    button.textContent = lastSearch
+    var container = document.getElementById("saved-search")
+    container.append(button)
     } else {
       return;
     }
@@ -150,52 +140,24 @@ var saveButton = document.getElementById("searchBeach");
     }
     init();
 
-    $("#saved-search").on("click", function (){
-      var searchVal=$("#searchVal").val();
-      var weatherAPIurl="http://api.openweathermap.org/geo/1.0/direct?q="+searchVal+"&appid=d572ae73424a51099cdef316a3e66b68"
-      fetch(weatherAPIurl).then(function(res){
-        return res.json();
-      }).then(function(data){
-        poslat= data[0].lat
-        poslon= data[0].lon
-        getBeachdata();
-      })
-        
-     });
-  
+    
+    $(".historyButton").on("click", function (event) {    
+      console.log(event.target.getAttribute("data-val"));
+      lastSearch = event.target.getAttribute("data-val");
 
-  //Or this one
-
-//   function distance(position1,position2){
-//     var lat1=position1.latitude;
-//     var lat2=position2.latitude;
-//     var lon1=position1.longitude;
-//     var lon2=position2.longitude;
-//     var R = 6371000; // metres
-//     var φ1 = lat1.toRadians();
-//     var φ2 = lat2.toRadians();
-//     var Δφ = (lat2-lat1).toRadians();
-//     var Δλ = (lon2-lon1).toRadians();
-
-//     var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
-//         Math.cos(φ1) * Math.cos(φ2) *
-//         Math.sin(Δλ/2) * Math.sin(Δλ/2);
-//     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-
-//     var d = R * c;
-//     return d;
-// }
-
-// var closest=locations[0];
-// var closest_distance=distance(closest,position.coords);
-// for(var i=1;i< 4 ;i++){
-//     if(distance(locations[i],position.coords)<closest_distance){
-//          closest_distance=distance(locations[i],position.coords);
-//          closest=locations[i];
-
-         
-//     $('#tempDisplay').append(closest);
-
-//     }
-// }
- 
+      var weatherAPIurlHistory =
+          "http://api.openweathermap.org/geo/1.0/direct?q=" +
+          lastSearch +
+          "&appid=d572ae73424a51099cdef316a3e66b68";
+      fetch(weatherAPIurlHistory
+      ).then(function (res) {
+          return res.json();
+      }
+      ).then(
+          function (data) {
+              poslat = data[0].lat;
+              poslon = data[0].lon;
+              getBeachdata();
+          });
+  });
+   
