@@ -61,7 +61,7 @@ p {
   box-sizing: unset;
 }
 
-.navbar-brand{
+.navbar-brand {
   -moz-transform: scale(1);
   -ms-transform: scale(1);
   -o-transform: scale(1);
@@ -71,29 +71,29 @@ p {
 
 img {
   -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    margin-top: 1rem;
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  margin-top: 1rem;
 }
 
 .logo {
   -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    margin-left: 40px;
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  margin-left: 40px;
 }
 
 .control {
   justify-content: center;
   -moz-transform: scale(1);
-    -ms-transform: scale(1);
-    -o-transform: scale(1);
-    -webkit-transform: scale(1);
-    transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  -webkit-transform: scale(1);
+  transform: scale(1);
 }
 
 .show {
@@ -102,15 +102,17 @@ img {
 
 
 
-.field.has-addons .control:first-child:not(:only-child) .button, .field.has-addons .control:first-child:not(:only-child) .input, .field.has-addons .control:first-child:not(:only-child) .select select {
+.field.has-addons .control:first-child:not(:only-child) .button,
+.field.has-addons .control:first-child:not(:only-child) .input,
+.field.has-addons .control:first-child:not(:only-child) .select select {
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   margin-top: 10px;
 }
 
-  .field.is-grouped.is-grouped-centered {
-    justify-content: center;
-    margin-top: 10px;
+.field.is-grouped.is-grouped-centered {
+  justify-content: center;
+  margin-top: 10px;
 }
 
 .card {
