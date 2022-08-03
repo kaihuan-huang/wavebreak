@@ -42,7 +42,7 @@ $("#searchBeach").on("click", function (event) {
   var searchVal = $("#searchVal").val();
   console.log("searchVal", searchVal);
   var weatherAPIurl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     searchVal +
     "&appid=d572ae73424a51099cdef316a3e66b68";
   fetch(weatherAPIurl
@@ -155,7 +155,7 @@ $(".historyButton").on("click", function (event) {
   lastSearch = event.target.getAttribute("data-val");
 
   var weatherAPIurlHistory =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     lastSearch +
     "&appid=d572ae73424a51099cdef316a3e66b68";
   fetch(weatherAPIurlHistory
