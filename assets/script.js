@@ -69,7 +69,7 @@ function getBeachdata() {
     beachList = [];
     for (var i = 0; i < res.length; i++) {
       // if this location is within 0.1KM of the user, add it to the list
-      if (distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K") <= 20) {
+      if (distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K") <= 30) {
         // text += '<p>' + res[i].NameMobileWeb + " "+ distance(poslat, poslon, res[i].LATITUDE, res[i].LONGITUDE, "K") +'</p>';
         // console.log(text)
         var beach = {
