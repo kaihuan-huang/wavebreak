@@ -4,9 +4,9 @@
 
 An interactive Beach Dashboard application allows users to search the nearby beaches in California using two server-side APIs, ability to search multiple cities and saves the recent search history. Uses a Bulma CSS framework, and good quality coding standards...
 
-GitHub: https://github.com/hannamarcus/wavebreak
+GitHub: https://github.com/kaihuan-huang/wavebreak
 
-GitPage: https://hannamarcus.github.io/wavebreak/
+GitPage: https://kaihuan-huang.github.io/wavebreak/
 
 ```
 Presented a polished UI with the wave break logo and the search bar and history button on the start page.
