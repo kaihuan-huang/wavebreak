@@ -1,15 +1,10 @@
 
-// var today = new Date();
-// var date = today.getMonth() + "/" + today.getDate() + "/" + today.getFullYear();
-// console.log(today);
-// $('.time').append(today);
 var beachList = [];
 var poslat = "";
 var poslon = "";
 
 
 //calculation for distance calculation
-
 function distance(
   lat1, lon1, lat2, lon2, unit
 ) {
@@ -36,7 +31,6 @@ function distance(
 }
 
 //finding the entered lat/lon with open weather api
-
 $("#searchBeach").on("click", function (event) {
   event.preventDefault();
   var searchVal = $("#searchVal").val();
@@ -58,7 +52,6 @@ $("#searchBeach").on("click", function (event) {
 });
 
 //pulling data from the coastal api
-
 function getBeachdata() {
   $.ajax({
     url: "https://api.coastal.ca.gov/access/v1/locations/",
@@ -92,7 +85,6 @@ function getBeachdata() {
     console.log("nearbyBeachList", beachList);
 
     //adds cards of beach data to html
-
     for (var i = 0; i < 6; i++) {
 
       var cardDiv = $('<div class="card">');
@@ -111,9 +103,7 @@ function getBeachdata() {
   });
 }
 
-
 //saving the search value to button under searchbar
-
 var search = document.getElementById("searchVal");
 var saveButton = document.getElementById("searchBeach");
 
@@ -124,7 +114,9 @@ function saveSearch() {
   localStorage.setItem("searchSave", JSON.stringify(searchSave));
 }
 function renderLastSearch() {
-  var lastSearch = JSON.parse(localStorage.getItem("searchSave"))["search"];
+  const searchSaveObj = JSON.parse(localStorage.getItem("searchSave"));
+  let lastSearch = searchSaveObj? searchSaveObj['search'] : null;
+
   if (lastSearch) {
     // document.getElementById("saved-search").innerHTML = lastSearch.search;
     var button = document.createElement("button")
